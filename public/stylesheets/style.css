@@ -31,3 +31,17 @@ a {
   color: cadetblue;
   font-style: italic;
 }
+
+.resume-box{
+  margin: auto;
+  height: auto;
+  border: 1px solid black;
+  width: auto;
+}
+
+.project-box{
+  margin: auto;
+  height: 4em;
+  border: 1px solid black;
+  width: auto;
+}

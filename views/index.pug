@@ -5,23 +5,48 @@ block content
     .row
       .col-md-12
         h2.main-title Daniel J. Frank
-        i.slogan Senior Software Engineer
+        p.slogan Senior Software Engineer
+        p.slogan NOT a designer
         hr
   .container 
     h2.subtitle Resume 
     .row 
-      .col-md-4 
+      .col-md-4.resume-box 
         h3 SKILLS
-      .col-md-4 
+        if skills.length > 0
+          table.table.table-responsive.wrap-text
+            thead
+              tr
+                th Name
+                th Years Experience
+            tbody
+              each skill, i in skills
+                tr
+                  td= skill.name
+                  td= skill.years
+      .col-md-4.resume-box  
         h3 TECH
-      .col-md-4 
+        if techs.length > 0
+          table.table.table-responsive.wrap-text
+            thead
+              tr
+                th Name
+                th Years Experience
+            tbody
+              each tech, i in techs
+                tr
+                  td= tech.name
+                  td= tech.years
+      .col-md-4.resume-box  
         h3 ACCOMPLISHMENTS 
     .row 
-      .col-md-12 
+      .col-md-12.resume-box 
         h3 EXPERIENCE 
   hr
   .container 
     h2.subtitle Projects
     .row
-    
+      .col-md-12.project-box 
+        h3 Project Name
+
 
