@@ -6,3 +6,28 @@ body {
 a {
   color: #00B7FF;
 }
+
+.container {
+  text-align: center;
+}
+
+.main-title{
+  font-size: 4em;
+  text-align: center;
+  font-family: serif;
+  text-decoration: none;
+  color:cadetblue;
+}
+
+.subtitle {
+  font-size: 2em;
+  text-align: left;
+  font-family: serif;
+  text-decoration: none;
+  color: rgb(2, 104, 57);
+}
+
+.slogan {
+  color: cadetblue;
+  font-style: italic;
+}
