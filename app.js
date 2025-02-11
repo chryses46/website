@@ -4,8 +4,8 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var morgan = require('morgan');
 const expressWinston = require('express-winston');
-const logger = require('./utils/logger');
-require('dotenv').config({ path: './.env.development' });
+const logger = require('utils/logger');
+require('dotenv').config({ path: '.env.development' });
 
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
