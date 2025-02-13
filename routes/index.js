@@ -7,6 +7,8 @@ router.get('/', function(req, res, next) {
     title: 'Daniel Frank | Senior Software Engineer',
     skills: req.skills,
     techs: req.techs,
+    accomplishments: req.accomplishments,
+    experiences: req.experiences
     }
   );
 });

@@ -1,4 +1,4 @@
-const { Skill, Tech } = require('./models');
+const { Skill, Tech, Accomplishment, Experience, Duty } = require('./models');
 
 async function ensureAuthenticated(req, res, next) {
   if (req.oidc.isAuthenticated()) {
@@ -51,6 +51,31 @@ async function getTechs(req, res, next){
       order: [['years', 'DESC']]
   });
     req.techs = techs;
+    next();
+  } catch (error) {
+    console.error('Error interacting with the database: ', error);
+  }
+}
+
+async function getAccomplishments(req, res, next){
+  try {
+    const accomplishments = await Accomplishment.findAll();
+    req.accomplishments = accomplishments;
+    next();
+  } catch (error) {
+    console.error('Error interacting with the database: ', error);
+  }
+}
+
+async function getExperiences(req, res, next){
+  try {
+    const experiences = await Experience.findAll({
+      include: [{
+        model: Duty,
+        as: 'duties'
+      }]
+    });
+    req.experiences = experiences;
     next();
   } catch (error) {
     console.error('Error interacting with the database: ', error);
@@ -127,5 +152,7 @@ module.exports = {
   ensureRole,
   adminOnly,
   getSkills,
-  getTechs
+  getTechs,
+  getAccomplishments,
+  getExperiences
 };

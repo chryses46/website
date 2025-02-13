@@ -32,13 +32,40 @@ a {
   font-style: italic;
 }
 
-.resume-box{
+.resume-box {
   margin: auto;
   height: auto;
   border: 1px solid black;
   width: auto;
+  max-height: 17em;
+  overflow: scroll;
 }
-
+.resume-box >h3 {
+  text-align: left;
+  font-size: 1.25rem;
+}
+.table{
+  display: table;
+}
+tr, td {
+  text-align: center; 
+  vertical-align: middle; 
+}
+.hidden {
+  display: none;
+}
+.hidden-table{
+  display: none;
+}
+.expand-toggle {
+  cursor: pointer;
+}
+.expand-toggle.expanded::before {
+  content: "- ";
+}
+.expand-toggle::before {
+  content: "+ ";
+}
 .project-box{
   margin: auto;
   height: 4em;
