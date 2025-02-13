@@ -1,9 +1,90 @@
 extends layout
 
 block content
-  h1=title
-  p Welcome! This site is under construction. Check back later! 
-  p -Daniel Frank 
-
-  
-
+  .container
+    .row
+      .col-md-12
+        h2.main-title Daniel J. Frank
+        p.slogan Senior Software Engineer, CSM
+        hr
+  .container 
+    h2.subtitle 
+      a(href='/images/resume.pdf' target='blank') Resume 
+    .row 
+      .col.resume-box(data-section="skills")
+        h3
+          span.expand-toggle(data-toggle="skills") SKILLS
+        .skills-list.hidden
+          if skills.length > 0
+            table.table.table-responsive.wrap-text
+              tbody
+                each skill, i in skills
+                  tr
+                    td= skill.name
+    .row  
+      .col.resume-box(data-section="techs")
+        h3 
+          span.expand-toggle(data-toggle="techs") TECH
+        .techs-list.hidden
+          if techs.length > 0
+            table.table.table-responsive.wrap-text
+              tbody
+                each tech, i in techs
+                  tr
+                    td= tech.name
+    .row
+      .col.resume-box(data-section="accomplishments")
+        h3 
+          span.expand-toggle(data-toggle="accomplishments") ACCOMPLISHMENTS
+        .accomplishments-list.hidden 
+          if accomplishments.length > 0 
+            table.table.table-responsive.wrap-text
+              tbody
+                each accomplishment, i in accomplishments
+                  tr
+                    td
+                      i.bi.bi-check
+                      |  
+                      = accomplishment.description
+    .row 
+      .col.resume-box(data-section="experiences")
+        h3 
+          span.expand-toggle(data-toggle="experiences") EXPERIENCE
+        .experiences-list.hidden 
+          if experiences.length > 0 
+            table.table.table-responsive.wrap-text
+              thead 
+                th Company 
+                th Position 
+                th Company Location 
+                th Work Location 
+                th Description 
+                th Duties
+              tbody
+                each experience, i in experiences
+                  tr
+                    td= experience.company_name 
+                    td= experience.position
+                    td= experience.company_location 
+                    td= experience.work_location 
+                    td= experience.description 
+                    each duty in experience.duties 
+                      td=duty.duty
+  hr
+  //-.container 
+    h2.subtitle Projects
+    .row
+      .col-md-12.project-box 
+        h3 Coming Soon!
+  script. 
+    document.addEventListener("DOMContentLoaded", function() {
+      const toggles = document.querySelectorAll(".expand-toggle");
+      
+      toggles.forEach(function(toggle) {
+        toggle.addEventListener("click", function() {
+          const target = document.querySelector(`.${toggle.dataset.toggle}-list`);
+          target.classList.toggle("hidden");
+          toggle.classList.toggle("expanded");
+        });
+      });
+    });
