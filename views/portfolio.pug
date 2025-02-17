@@ -1,0 +1,38 @@
+extends layout 
+
+block content 
+    h1 Welcome to my Portfolio 
+    hr
+    p Below you will find examples of my work 
+    hr
+    a.portfolio-link(href='https://paris-play-8aaa1bdd35b5.herokuapp.com/' target='none')
+        .container.portfolio-container 
+            .row 
+                h2 Paris Play Website
+            .row 
+                p This website was created out of a need to move a small business site away from Wix to an internal solution.
+            .row 
+                p Tech stack:
+                hr
+            .row
+                ul(style='text-align: left') 
+                    li Heroku Hosting 
+                    li NodeJS with express.js 
+                    li Frontend with PUG HTML and CSS 
+                    li Backend DB built on MySQL hosted in JAWSdb
+    hr
+    a.portfolio-link(href='https://computereaseapi.deltek.com/' target='none')
+        .container.portfolio-container 
+            .row 
+                h2 Computer Ease API
+            .row 
+                p This API was established to communicate between the Computer Ease Desktop application and the Computer Ease Field Mobile App.
+            .row 
+                p Tech stack:
+                hr
+            .row
+                ul(style='text-align: left') 
+                    li AWS Hosted 
+                    li NodeJS, JavaScript, Sequelize LINQ 
+                    li REST API Endpoints
+                    li PostgreSQL DB Hosted on AWS RDS

@@ -6,7 +6,8 @@ var logger = require('morgan');
 require('dotenv').config({ path: './.env.development' });
 
 const indexRouter = require('./routes/index');
-const usersRouter = require('./routes/users');
+const experienceRouter = require('./routes/experience');
+const portfolioRouter = require('./routes/portfolio');
 
 var app = express();
 
@@ -26,7 +27,8 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', getSkills, getTechs, getAccomplishments, getExperiences, indexRouter);
-app.use('/users', usersRouter);
+app.use('/experience', getExperiences, experienceRouter);
+app.use('/portfolio', portfolioRouter);
 
 // Catch 404 and forward to error handler
 app.use(function(req, res, next) {

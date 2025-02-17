@@ -400,3 +400,5 @@ FodyWeavers.xsd
 *.sln.iml
 public/.DS_Store
 .DS_Store
+.env.development
+.env.development

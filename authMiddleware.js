@@ -70,6 +70,7 @@ async function getAccomplishments(req, res, next){
 async function getExperiences(req, res, next){
   try {
     const experiences = await Experience.findAll({
+      order: [['end_date', 'DESC']],
       include: [{
         model: Duty,
         as: 'duties'

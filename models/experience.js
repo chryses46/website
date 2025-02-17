@@ -25,6 +25,14 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.TEXT,
         allowNull: false
       },
+      start_date: {
+        type: DataTypes.DATE,
+        allowNull: true,
+      },
+      end_date: {
+        type: DataTypes.DATE,
+        allowNull: true,
+      }
       
     }, {
       tableName: 'experiences',
