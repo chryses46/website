@@ -1,0 +1,24 @@
+extends layout
+
+block content
+  .experience-container
+    if experiences.length > 0 
+        each experience, i in experiences
+            .row.experience-container
+                h4= experience.company_name + ', ' + experience.company_location
+                ul 
+                    li 
+                        i.bi.bi-check= experience.position
+                    li
+                        i.bi.bi-check= experience.work_location 
+                    li 
+                        p='End Date: ' + experience.end_date
+                    li
+                        p=experience.description 
+                if experience.duties.length > 0 
+                    h4  Duties
+                    ul.duties
+                        each duty in experience.duties 
+                            li
+                                p=duty.duty
+            hr
