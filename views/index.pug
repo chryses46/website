@@ -3,8 +3,6 @@ extends layout
 block content
 
   .container 
-    h2.subtitle 
-      a(href='/images/resume.pdf' target='blank') Resume 
     .row 
       h3
         span.expand-toggle(data-toggle="skills") SKILLS
@@ -44,6 +42,10 @@ block content
                       i.bi.bi-check
                       |  
                       = accomplishment.description
+    .row
+      .col
+        h2.subtitle.text-center 
+          a(href='/images/resume.pdf' target='blank') Download My Resume Here!
   script. 
     document.addEventListener("DOMContentLoaded", function() {
       const toggles = document.querySelectorAll(".expand-toggle");

@@ -100,3 +100,9 @@ a.portfolio-link{
 .portfolio-container:hover{
   cursor: pointer;
  }
+
+ @media screen and (max-width:390px){
+  body{
+    padding: 1em;
+  }
+ }
