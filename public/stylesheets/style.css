@@ -100,3 +100,14 @@ a.portfolio-link{
 .portfolio-container:hover{
   cursor: pointer;
  }
+
+.duties-header{
+  text-indent: 1em;
+  font-size: 1.5em;
+}
+
+ @media screen and (max-width:390px){
+  body{
+    padding: 1em;
+  }
+ }
