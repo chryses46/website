@@ -1,24 +1,34 @@
 extends layout
 
-block content
-  .experience-container
-    if experiences.length > 0 
-        each experience, i in experiences
-            .row.experience-container
-                h4= experience.company_name + ', ' + experience.company_location
-                ul 
-                    li 
-                        i.bi.bi-check= experience.position
-                    li
-                        i.bi.bi-check= experience.work_location 
-                    li 
-                        p='End Date: ' + experience.end_date
-                    li
-                        p=experience.description 
+block content           
+    .experience-container
+        if experiences.length > 0 
+            each experience, i in experiences
+                .row.experience-container
+                    h4= experience.company_name + ', ' + experience.company_location
+                    ul 
+                        li 
+                            i.bi.bi-check= experience.position
+                        li
+                            i.bi.bi-check= experience.work_location 
+                        li 
+                            p='End Date: ' + experience.end_date
+                        li
+                            p.description
+                                 - const words = experience.description.split(' ')
+                                    each word, index in words
+                                        span(data-index=`${index}`)= word + ' '
+                
                 if experience.duties.length > 0 
+                .row.experience-container 
                     h4.duties-header  Duties
                     ul.duties
                         each duty in experience.duties 
                             li
-                                p=duty.duty
-            hr
+                                p.duty 
+                                    -const words = duty.duty.split(' ')
+                                        each word, index in words 
+                                            span(data-index=`${index}`)= word + ' '
+                hr
+    script(type='application/json' id='search-terms') !{JSON.stringify(search)}
+    script(src='/javascripts/highlight.js')
