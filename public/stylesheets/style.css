@@ -8,6 +8,10 @@ a {
   color: #00B7FF;
 }
 
+.active i {
+  text-decoration: underline;
+}
+
 .container {
   text-align: center;
 }
