@@ -105,6 +105,9 @@ a.portfolio-link{
   text-indent: 1em;
   font-size: 1.5em;
 }
+.highlight {
+  background-color: yellow;
+}
 
  @media screen and (max-width:390px){
   body{
