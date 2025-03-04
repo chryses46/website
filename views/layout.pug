@@ -18,13 +18,13 @@ html
             p.slogan Senior Software Engineer, CSM
             hr
           .col  
-            a(href='/')
+            a(href='/' class=(pageTitle == 'Home' ? 'active' : ''))
               i Home 
           .col 
-            a(href='/experience')
+            a(href='/experience' class=(pageTitle == 'Experience' ? 'active' : ''))
               i Experience
           .col 
-            a(href='/portfolio')
+            a(href='/portfolio' class=(pageTitle == 'Portfolio' ? 'active' : ''))
               i Portfolio
     block content
     script(src='https://code.jquery.com/jquery-3.5.1.slim.min.js')

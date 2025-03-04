@@ -12,6 +12,7 @@ router.get('/', function(req, res, next) {
         title: `Daniel Frank | ${pageTitle}`,
         experiences: req.experiences,
         search: relatedParams,
+        pageTitle: pageTitle
         }
       );
 });
