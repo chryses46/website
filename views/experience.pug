@@ -1,34 +1,92 @@
 extends layout
 
-block content           
-    .experience-container
-        if experiences.length > 0 
-            each experience, i in experiences
-                .row.experience-container
-                    h4= experience.company_name + ', ' + experience.company_location
-                    ul 
-                        li 
-                            i.bi.bi-check= experience.position
-                        li
-                            i.bi.bi-check= experience.work_location 
-                        li 
-                            p='End Date: ' + experience.end_date
-                        li
-                            p.description
-                                 - const words = experience.description.split(' ')
-                                    each word, index in words
-                                        span(data-index=`${index}`)= word + ' '
-                
-                if experience.duties.length > 0 
-                .row.experience-container 
-                    h4.duties-header  Duties
-                    ul.duties
-                        each duty in experience.duties 
-                            li
-                                p.duty 
-                                    -const words = duty.duty.split(' ')
-                                        each word, index in words 
-                                            span(data-index=`${index}`)= word + ' '
-                hr
-    script(type='application/json' id='search-terms') !{JSON.stringify(search)}
+block content
+    // Experience Hero Section
+    section.experience-hero.py-5
+        .container
+            .row.justify-content-center.text-center
+                .col-lg-8
+                    h1.experience-title
+                        i.fas.fa-briefcase.me-3
+                        | Professional Experience
+                    p.experience-subtitle A journey through my career milestones and achievements
+
+    // Experience Timeline
+    section#experience-timeline.experience-timeline.py-5
+        .container
+            if experiences.length > 0
+                .timeline
+                    each experience, i in experiences
+                        .timeline-item
+                            .timeline-marker
+                                i.fas.fa-briefcase
+                            .timeline-content
+                                .experience-card
+                                    .experience-header
+                                        h3.experience-company= experience.company_name
+                                        .experience-location
+                                            i.fas.fa-map-marker-alt.me-2
+                                            | #{experience.company_location}
+                                        .experience-position
+                                            i.fas.fa-user-tie.me-2
+                                            | #{experience.position}
+                                        .experience-dates
+                                            i.fas.fa-calendar.me-2
+                                            | #{experience.end_date}
+                                    
+                                    .experience-description
+                                        p= experience.description
+                                    
+                                    if experience.duties && experience.duties.length > 0
+                                        .experience-duties
+                                            h5.duties-title
+                                                i.fas.fa-tasks.me-2
+                                                | Key Responsibilities
+                                            ul.duties-list
+                                                each duty in experience.duties
+                                                    li.duty-item
+                                                        i.fas.fa-check-circle.me-2
+                                                        | #{duty.duty}
+            else
+                .no-experience.text-center.py-5
+                    i.fas.fa-briefcase.fa-3x.mb-3.text-muted
+                    h3.text-muted No experience data available
+                    p.text-muted Please check back later for updated information.
+
+    // Skills Highlight Section
+    section.skills-highlight.py-5.bg-light
+        .container
+            .row.justify-content-center.text-center.mb-5
+                .col-lg-8
+                    h2.section-title
+                        i.fas.fa-star.me-3
+                        | Core Competencies
+                    p.section-subtitle Skills developed through professional experience
+            .row.g-4
+                .col-lg-3.col-md-6
+                    .skill-highlight-card
+                        .skill-icon
+                            i.fas.fa-code
+                        h5 Software Development
+                        p Full-stack development with modern technologies
+                .col-lg-3.col-md-6
+                    .skill-highlight-card
+                        .skill-icon
+                            i.fas.fa-users
+                        h5 Team Leadership
+                        p Leading cross-functional teams and mentoring developers
+                .col-lg-3.col-md-6
+                    .skill-highlight-card
+                        .skill-icon
+                            i.fas.fa-cogs
+                        h5 System Architecture
+                        p Designing scalable and maintainable systems
+                .col-lg-3.col-md-6
+                    .skill-highlight-card
+                        .skill-icon
+                            i.fas.fa-chart-line
+                        h5 Agile Methodology
+                        p Certified Scrum Master with proven track record
+
+    script(type='application/json' id='search-terms') !{JSON.stringify(search || {})}
     script(src='/javascripts/highlight.js')

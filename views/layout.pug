@@ -1,31 +1,84 @@
 doctype html
-html
+html(lang="en")
   head
     title= title
     link(rel='icon', href='/images/icon.png')
     meta(name="viewport", content="width=device-width, initial-scale=1.0")
     meta(name="charset", content="UTF-8")
-    link(rel='stylesheet', href='https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css')
-    link(rel='stylesheet', href='https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.8.1/font/bootstrap-icons.min.css')
+    meta(name="description", content="Daniel J. Frank - Senior Software Engineer & Certified Scrum Master")
+    link(rel='stylesheet', href='https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css')
+    link(rel='stylesheet', href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css')
+    link(rel='preconnect', href='https://fonts.googleapis.com')
+    link(rel='preconnect', href='https://fonts.gstatic.com', crossorigin)
+    link(href='https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap', rel='stylesheet')
     link(rel='stylesheet', href='/stylesheets/style.css')
   body
-    header
-    
-      .container   
-        .row 
-          .col-md-12
-            h2.main-title Daniel J. Frank
-            p.slogan Senior Software Engineer, CSM
-            hr
-          .col  
-            a(href='/' class=(pageTitle == 'Home' ? 'active' : ''))
-              i Home 
-          .col 
-            a(href='/experience' class=(pageTitle == 'Experience' ? 'active' : ''))
-              i Experience
-          .col 
-            a(href='/portfolio' class=(pageTitle == 'Portfolio' ? 'active' : ''))
-              i Portfolio
+    // Navigation
+    nav.navbar.navbar-expand-lg.navbar-dark.fixed-top
+      .container
+        a.navbar-brand(href='/')
+          i.fas.fa-code.me-2
+          | Daniel J. Frank
+        button.navbar-toggler(type='button', data-bs-toggle='collapse', data-bs-target='#navbarNav')
+          span.navbar-toggler-icon
+        .collapse.navbar-collapse#navbarNav
+          ul.navbar-nav.ms-auto
+            li.nav-item
+              a.nav-link(href='/' class=(pageTitle == 'Home' ? 'active' : ''))
+                i.fas.fa-home.me-1
+                | Home
+            li.nav-item
+              a.nav-link(href='/experience' class=(pageTitle == 'Experience' ? 'active' : ''))
+                i.fas.fa-briefcase.me-1
+                | Experience
+            li.nav-item
+              a.nav-link(href='/portfolio' class=(pageTitle == 'Portfolio' ? 'active' : ''))
+                i.fas.fa-folder-open.me-1
+                | Portfolio
+
+    // Hero Section
+    section.hero-section
+      .container
+        .row.align-items-center.min-vh-100
+          .col-lg-6
+            .hero-content
+              h1.hero-title
+                span.gradient-text Daniel J. Frank
+              p.hero-subtitle Senior Software Engineer & Certified Scrum Master
+              p.hero-description Building innovative solutions with modern technologies and agile methodologies
+              .hero-cta
+                a.btn.btn-primary.btn-lg.me-3(href='/images/resume.pdf', target='_blank')
+                  i.fas.fa-download.me-2
+                  | Download Resume
+                if pageTitle === 'Home'
+                  a.btn.btn-outline-light.btn-lg(href='#skills')
+                    i.fas.fa-arrow-down.me-2
+                    | View Skills
+                else if pageTitle === 'Experience'
+                  a.btn.btn-outline-light.btn-lg(href='#experience-timeline')
+                    i.fas.fa-briefcase.me-2
+                    | View Experience
+                else if pageTitle === 'Portfolio'
+                  a.btn.btn-outline-light.btn-lg(href='#featured-projects')
+                    i.fas.fa-folder-open.me-2
+                    | View Portfolio
+
     block content
-    script(src='https://code.jquery.com/jquery-3.5.1.slim.min.js')
-    script(src='https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js')
+
+    // Footer
+    footer.footer
+      .container
+        .row
+          .col-md-6
+            p.mb-0 &copy; 2024 Daniel J. Frank. All rights reserved.
+          .col-md-6.text-md-end
+            .social-links
+              a(href='https://www.linkedin.com/in/daniel-frank-598b9960/', target='_blank', aria-label='LinkedIn')
+                i.fab.fa-linkedin
+              a(href='https://github.com/chryses46', target='_blank', aria-label='GitHub')
+                i.fab.fa-github
+              a(href='mailto:danjfrank@proton.me', aria-label='Email')
+                i.fas.fa-envelope
+
+    script(src='https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js')
+    script(src='/javascripts/highlight.js')

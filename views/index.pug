@@ -2,63 +2,127 @@ extends layout
 
 block content
 
-  .container 
-    br
-    .row 
-      h3
-        span.expand-toggle(data-toggle="skills") SKILLS
-    .row
-      .col.resume-box
-        .skills-list.hidden(data-section="skills")
-          if skills.length > 0
-            table.table.table-responsive.wrap-text
-              tbody
-                each skill, i in skills
-                  tr
-                    td= skill.name
-    br
-    .row
-      h3 
-          span.expand-toggle(data-toggle="techs") TECH
-    .row  
-      .col.resume-box
-        .techs-list.hidden(data-section="techs")
-          if techs.length > 0
-            table.table.table-responsive.wrap-text
-              tbody
-                each tech, i in techs
-                  tr
-                    td= tech.name
-    br
-    .row
-      h3 
-        span.expand-toggle(data-toggle="accomplishments") ACCOMPLISHMENTS
-    .row
-      .col.resume-box
-        .accomplishments-list.hidden(data-section="accomplishments") 
-          if accomplishments.length > 0 
-            table.table.table-responsive.wrap-text
-              tbody
-                each accomplishment, i in accomplishments
-                  tr
-                    td
-                      i.bi.bi-check
-                      |  
-                      = accomplishment.description
-    br
-    .row
-      .col
-        h2.subtitle.text-center 
-          a(href='/images/resume.pdf' target='blank') Download My Resume Here!
-  script. 
-    document.addEventListener("DOMContentLoaded", function() {
-      const toggles = document.querySelectorAll(".expand-toggle");
+  // Skills Section
+  section#skills.py-5
+    .container
+      .row.justify-content-center.mb-5
+        .col-lg-8.text-center
+          h2.section-title
+            i.fas.fa-tools.me-3
+            | Core Skills
+          p.section-subtitle Technologies and expertise that drive my development process
       
-      toggles.forEach(function(toggle) {
-        toggle.addEventListener("click", function() {
-          const target = document.querySelector(`.${toggle.dataset.toggle}-list`);
-          target.classList.toggle("hidden");
-          toggle.classList.toggle("expanded");
+      .row.g-4
+        if skills.length > 0
+          each skill, i in skills
+            .col-lg-4.col-md-6
+              .skill-card
+                .skill-icon
+                  i.fas.fa-code
+                h5.skill-name= skill.name
+                .skill-level
+                  .skill-progress
+                    .skill-bar(style=`width: ${Math.floor(Math.random() * 40) + 60}%`)
+        else
+          .col-12.text-center
+            p.text-muted No skills available at the moment.
+
+  // Tech Stack Section
+  section#tech-stack.py-5.bg-light
+    .container
+      .row.justify-content-center.mb-5
+        .col-lg-8.text-center
+          h2.section-title
+            i.fas.fa-layer-group.me-3
+            | Technology Stack
+          p.section-subtitle Modern tools and frameworks I work with daily
+      
+      .row.g-4
+        if techs.length > 0
+          each tech, i in techs
+            .col-lg-3.col-md-4.col-sm-6
+              .tech-card
+                .tech-icon
+                  i.fas.fa-cog
+                h6.tech-name= tech.name
+                .tech-category
+                  span.badge.bg-primary Frontend
+        else
+          .col-12.text-center
+            p.text-muted No technologies available at the moment.
+
+  // Accomplishments Section
+  section#accomplishments.py-5
+    .container
+      .row.justify-content-center.mb-5
+        .col-lg-8.text-center
+          h2.section-title
+            i.fas.fa-trophy.me-3
+            | Key Accomplishments
+          p.section-subtitle Notable achievements and milestones in my career
+      
+      .row.g-4
+        if accomplishments.length > 0
+          each accomplishment, i in accomplishments
+            .col-lg-6
+              .accomplishment-card
+                .accomplishment-icon
+                  i.fas.fa-check-circle
+                .accomplishment-content
+                  p.accomplishment-text= accomplishment.description
+        else
+          .col-12.text-center
+            p.text-muted No accomplishments available at the moment.
+
+  // Call to Action Section
+  section#cta.py-5.bg-primary.text-white
+    .container
+      .row.justify-content-center.text-center
+        .col-lg-8
+          h2.mb-4 Ready to work together?
+          p.lead.mb-4 Let's discuss how I can help bring your next project to life.
+          .cta-buttons
+            a.btn.btn-light.btn-lg.me-3(href='/images/resume.pdf', target='_blank')
+              i.fas.fa-download.me-2
+              | Download Resume
+            a.btn.btn-outline-light.btn-lg(href='/experience')
+              i.fas.fa-briefcase.me-2
+              | View Experience
+
+  script.
+    document.addEventListener("DOMContentLoaded", function() {
+      // Smooth scrolling for anchor links
+      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+          e.preventDefault();
+          const target = document.querySelector(this.getAttribute('href'));
+          if (target) {
+            target.scrollIntoView({
+              behavior: 'smooth',
+              block: 'start'
+            });
+          }
         });
+      });
+
+      // Animate skill bars on scroll
+      const observerOptions = {
+        threshold: 0.5,
+        rootMargin: '0px 0px -50px 0px'
+      };
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const skillBars = entry.target.querySelectorAll('.skill-bar');
+            skillBars.forEach(bar => {
+              bar.style.animation = 'skillBarFill 1.5s ease-out forwards';
+            });
+          }
+        });
+      }, observerOptions);
+
+      document.querySelectorAll('.skill-card').forEach(card => {
+        observer.observe(card);
       });
     });

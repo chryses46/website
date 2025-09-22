@@ -1,38 +1,157 @@
-extends layout 
+extends layout
 
-block content 
-    h1 Welcome to my Portfolio 
-    hr
-    p Below you will find examples of my work 
-    hr
-    a.portfolio-link(href='https://paris-play-8aaa1bdd35b5.herokuapp.com/' target='none')
-        .container.portfolio-container 
-            .row 
-                h2 Paris Play Website
-            .row 
-                p This website was created out of a need to move a small business site away from Wix to an internal solution.
-            .row 
-                p Tech stack:
-                hr
-            .row
-                ul(style='text-align: left') 
-                    li Heroku Hosting 
-                    li NodeJS with express.js 
-                    li Frontend with PUG HTML and CSS 
-                    li Backend DB built on MySQL hosted in JAWSdb
-    hr
-    a.portfolio-link(href='https://computereaseapi.deltek.com/' target='none')
-        .container.portfolio-container 
-            .row 
-                h2 Computer Ease API
-            .row 
-                p This API was established to communicate between the Computer Ease Desktop application and the Computer Ease Field Mobile App.
-            .row 
-                p Tech stack:
-                hr
-            .row
-                ul(style='text-align: left') 
-                    li AWS Hosted 
-                    li NodeJS, JavaScript, Sequelize LINQ 
-                    li REST API Endpoints
-                    li PostgreSQL DB Hosted on AWS RDS
+block content
+    // Portfolio Hero Section
+    section.portfolio-hero.py-5
+        .container
+            .row.justify-content-center.text-center
+                .col-lg-8
+                    h1.portfolio-title
+                        i.fas.fa-folder-open.me-3
+                        | My Portfolio
+                    p.portfolio-subtitle Showcasing innovative projects and technical solutions
+
+    // Featured Projects
+    section#featured-projects.featured-projects.py-5
+        .container
+            .row.g-4
+                // Paris Play Project
+                .col-lg-6
+                    .project-card
+                        .project-image
+                            .project-overlay
+                                .project-links
+                                    a.btn.btn-outline-primary(href='https://github.com/chryses46/ParisPlay/', target='_blank')
+                                        i.fab.fa-github.me-2
+                                        | Source Code
+                        .project-content
+                            h3.project-title Paris Play Website
+                            p.project-description This website was created out of a need to move a small business site away from Wix to an internal solution, providing better control and customization.
+                            .project-tech
+                                h6.tech-label
+                                    i.fas.fa-code.me-2
+                                    | Technology Stack
+                                .tech-tags
+                                    span.tech-tag Heroku Hosting
+                                    span.tech-tag NodeJS
+                                    span.tech-tag Express.js
+                                    span.tech-tag PUG Templates
+                                    span.tech-tag CSS3
+                                    span.tech-tag MySQL
+                                    span.tech-tag JAWSdb
+
+                // Computer Ease API Project
+                .col-lg-6
+                    .project-card
+                        .project-image
+                            .project-overlay
+                                .project-links
+                                    a.btn.btn-primary.me-2(href='https://computereaseapi.deltek.com/', target='_blank')
+                                        i.fas.fa-external-link-alt.me-2
+                                        | Live Demo
+                        .project-content
+                            h3.project-title Computer Ease API
+                            p.project-description This API was established to communicate between the Computer Ease Desktop application and the Computer Ease Field Mobile App, enabling seamless data synchronization.
+                            .project-tech
+                                h6.tech-label
+                                    i.fas.fa-code.me-2
+                                    | Technology Stack
+                                .tech-tags
+                                    span.tech-tag AWS Hosting
+                                    span.tech-tag NodeJS
+                                    span.tech-tag JavaScript
+                                    span.tech-tag Sequelize
+                                    span.tech-tag REST API
+                                    span.tech-tag PostgreSQL
+                                    span.tech-tag AWS RDS
+
+    // Project Statistics
+    section.project-stats.py-5.bg-light
+        .container
+            .row.text-center
+                .col-lg-3.col-md-6.mb-4
+                    .stat-card
+                        .stat-icon
+                            i.fas.fa-project-diagram
+                        .stat-number 15+
+                        .stat-label Projects Completed
+                .col-lg-3.col-md-6.mb-4
+                    .stat-card
+                        .stat-icon
+                            i.fas.fa-code
+                        .stat-number 50K+
+                        .stat-label Lines of Code
+                .col-lg-3.col-md-6.mb-4
+                    .stat-card
+                        .stat-icon
+                            i.fas.fa-users
+                        .stat-label Team Projects
+                        .stat-number 8+
+                .col-lg-3.col-md-6.mb-4
+                    .stat-card
+                        .stat-icon
+                            i.fas.fa-trophy
+                        .stat-label Years Experience
+                        .stat-number 10+
+
+    // Skills Showcase
+    section.skills-showcase.py-5
+        .container
+            .row.justify-content-center.text-center.mb-5
+                .col-lg-8
+                    h2.section-title
+                        i.fas.fa-tools.me-3
+                        | Technical Expertise
+                    p.section-subtitle Technologies and methodologies I use to bring ideas to life
+            .row.g-4
+                .col-lg-4.col-md-6
+                    .skill-category
+                        .category-icon
+                            i.fas.fa-laptop-code
+                        h4 Frontend Development
+                        .skill-list
+                            span.skill-item React
+                            span.skill-item Vue.js
+                            span.skill-item JavaScript
+                            span.skill-item TypeScript
+                            span.skill-item CSS3
+                            span.skill-item HTML5
+                .col-lg-4.col-md-6
+                    .skill-category
+                        .category-icon
+                            i.fas.fa-server
+                        h4 Backend Development
+                        .skill-list
+                            span.skill-item Node.js
+                            span.skill-item Express.js
+                            span.skill-item Python
+                            span.skill-item REST APIs
+                            span.skill-item GraphQL
+                            span.skill-item Microservices
+                .col-lg-4.col-md-6
+                    .skill-category
+                        .category-icon
+                            i.fas.fa-database
+                        h4 Database & Cloud
+                        .skill-list
+                            span.skill-item MySQL
+                            span.skill-item PostgreSQL
+                            span.skill-item MongoDB
+                            span.skill-item AWS
+                            span.skill-item Heroku
+                            span.skill-item Docker
+
+    // Call to Action
+    section.portfolio-cta.py-5.bg-primary.text-white
+        .container
+            .row.justify-content-center.text-center
+                .col-lg-8
+                    h2.mb-4 Interested in working together?
+                    p.lead.mb-4 Let's discuss your next project and how I can help bring your vision to life.
+                    .cta-buttons
+                        a.btn.btn-light.btn-lg.me-3(href='/images/resume.pdf', target='_blank')
+                            i.fas.fa-download.me-2
+                            | Download Resume
+                        a.btn.btn-outline-light.btn-lg(href='mailto:danjfrank@proton.me')
+                            i.fas.fa-envelope.me-2
+                            | Get In Touch

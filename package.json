@@ -1,11 +1,11 @@
 {
-  "name": "website",
-  "version": "0.0.0",
+  "name": "Resume Website",
+  "version": "2.0.0",
   "private": false,
   "scripts": {
     "start": "node ./bin/www",
     "start:dev": "set NODE_ENV=development; node ./bin/www",
-    "start:stage": "set NODE_ENV=staging; node ./bin/www"
+    "start:stage": "node --watch ./bin/www"
   },
   "dependencies": {
     "bootstrap": "^5.3.3",
